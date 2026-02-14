@@ -1,0 +1,55 @@
+:root {
+    /* Headings */
+    --fs-h1: 5.5em;
+    --fs-h2: 2em;
+    --fs-h2-mob: 1.5em;
+    --fs-h3: 1.25em;
+
+    /* Texts */
+    --fs-text: 1em;
+    --fs-text-sm: 0.75em;
+
+    /* Font weights */
+    --fw-bold: 700;
+    --fw-semi-bold: 600;
+    --fw-regular: 400;
+
+    /* Line height */
+    --lh-1: 120%;
+    --lg-2: 110%;
+
+    /* Colors */
+    --c-main: #73675B;
+    --c-gray-dark: #999999;
+    --c-gray-medium: #BFBFBF;
+    --c-gray-light: #D9D9D9;
+    --c-white: #FFFFFF;
+    --c-black: #313131;
+
+    /* Spacing */
+    --sp-1: 2em;
+    --sp-2: 1.25em;
+    --sp-3: 0.75em;
+    --sp-4: 0.5em;
+    --sp-5: 0.25em;
+
+    /* UI spading */
+    --sp-ui-1: 32px;
+    --sp-ui-2: 20px;
+    --sp-ui-3: 12px;
+    --sp-ui-4: 8px;
+    --sp-ui-5: 4px;
+
+    /* Borders */
+    --border-1: 1px solid var(--c-gray-dark);
+
+    --br-1: 3px;
+
+    /* Transition */
+    --transition-1: 0.2s ease-in-out;
+
+    /* Z indexes */
+    --z-index-1: 10;
+    --z-index-2: 20;
+    --z-index-3: 30;
+}

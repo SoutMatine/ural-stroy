@@ -1,0 +1,9 @@
+@import 'bootstrap.min.css';
+@import 'swiper.min.css';
+@import 'normalize.css';
+@import 'fonts.css';
+@import 'tokens.css';
+@import 'globals.css';
+
+@import '../components/header/header.css';
+@import '../components/footer/footer.css'

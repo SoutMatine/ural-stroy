@@ -1,0 +1,6 @@
+import './bootstrap.bundle.min.js'
+import './components.js'
+import './jquery.min.js'
+import '../components/header/header.js'
+import './swiper-bundle.min.js'
+import './app.js'

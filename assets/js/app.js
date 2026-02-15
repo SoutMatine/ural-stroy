@@ -22,13 +22,11 @@ function heroHeight() {
   const heroInner = $(".hero__inner");
 
   if (windowWidth > 992) {
-    // Получаем исходную высоту (не текущую измененную)
     const originalHeight = heroInner.data("original-height");
 
     if (originalHeight) {
       heroInner.css("height", originalHeight + heroImgHieght + "px");
     } else {
-      // Сохраняем исходную высоту при первом запуске
       const initialHeight = heroInner.height();
       heroInner.data("original-height", initialHeight);
       heroInner.css("height", initialHeight + heroImgHieght + "px");
@@ -45,6 +43,7 @@ function stepsAccordion() {
     $(this).addClass("active");
   });
 }
+
 
 function Btns() {
   createButton("Расчитать стоимость", $(".content-btn"));

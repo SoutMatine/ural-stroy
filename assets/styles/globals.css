@@ -472,7 +472,9 @@ main {
 }
 
 .steps__cards {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+
   transition: var(--transition-1);
   -webkit-transition: var(--transition-1);
   -moz-transition: var(--transition-1);
@@ -507,9 +509,19 @@ main {
   }
 }
 
+.steps__card:not(.active) {
+  &:first-child {
+    order: 0;
+  }
+
+  &:nth-child(2) {
+    order: 1;
+  }
+}
+
 .steps__card.active {
-  height: max-content;
-  order: 1;
+  height: 500px;
+  order: 2;
   cursor: auto;
   transition: var(--transition-1);
   -webkit-transition: var(--transition-1);

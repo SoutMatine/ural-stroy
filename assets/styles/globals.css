@@ -498,10 +498,6 @@ main {
   -o-transition: var(--transition-1);
   padding-top: calc(var(--sp-2) * 1.04);
 
-  &:last-child {
-    border-bottom: var(--border-1);
-  }
-
   @media (max-width: 992px) {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr max-content 1fr;
@@ -509,20 +505,10 @@ main {
   }
 }
 
-.steps__card:not(.active) {
-  &:first-child {
-    order: 0;
-  }
-
-  &:nth-child(2) {
-    order: 1;
-  }
-}
-
 .steps__card.active {
   height: 500px;
-  order: 2;
   cursor: auto;
+  border-bottom: var(--border-1);
   transition: var(--transition-1);
   -webkit-transition: var(--transition-1);
   -moz-transition: var(--transition-1);
@@ -533,10 +519,6 @@ main {
 
 .steps__img {
   width: 100%;
-
-  @media (max-width: 992px) {
-    order: 2;
-  }
 }
 
 .steps__img img {

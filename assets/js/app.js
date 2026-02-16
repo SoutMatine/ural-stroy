@@ -2,7 +2,7 @@ function marginForMain() {
   const headerHeight = $(".header__inner").outerHeight(true);
   const main = $("main");
 
-  main.css("top", headerHeight + 1 + "px");
+  main.css("margin-top", headerHeight + 1 + "px");
 
   // $(document).ready(function () {
   //     marginForMain();
@@ -44,6 +44,13 @@ function stepsAccordion() {
   });
 }
 
+function projecstLineHeight() {
+  const line = $(".project__item-line")
+  const imgHeight = $(".project__item-img").outerHeight()
+
+  line.css("height", imgHeight + "px")
+}
+
 
 function Btns() {
   createButton("Расчитать стоимость", $(".content-btn"));
@@ -66,8 +73,9 @@ $(document).ready(function () {
   heroMarginForImg();
   heroHeight();
   burgerMenu();
-
   stepsAccordion();
+  projecstLineHeight();
+
 
   $(document).on("footer:loaded", Btns);
 
@@ -78,45 +86,9 @@ $(document).ready(function () {
   $(window).on("resize", function () {
     heroMarginForImg();
     heroHeight();
+    projecstLineHeight();
 
     $(document).on("header:loaded", marginForMain);
     $(document).on("header:loaded", setMobMenuMargin);
-  });
-});
-
-$(document).ready(function () {
-  const swiperEl = $(".blog-swiper");
-  const $customCurrent = $(".pagination-current");
-  const $customTotal = $(".pagination-total");
-
-  function updateCustomPagination() {
-    const swiper = swiperEl[0].swiper;
-    if (swiper && $customCurrent.length && $customTotal.length) {
-      const currentGroup = Math.floor(swiper.realIndex / 3) + 1;
-      const totalGroups = Math.ceil(swiper.slides.length / 3);
-
-      $customCurrent.text(currentGroup);
-      $customTotal.text(totalGroups);
-    }
-  }
-
-  const params = {
-    slidesPerView: 3,
-    slidesPerGroup: 3,
-    navigation: {
-      nextEl: ".button-next",
-      prevEl: ".button-prev",
-    }
-  };
-
-  Object.assign(swiperEl[0], params);
-  swiperEl[0].initialize();
-
-  const swiper = swiperEl[0].swiper;
-
-  updateCustomPagination();
-
-  swiper.on('slideChange', function () {
-    updateCustomPagination();
   });
 });

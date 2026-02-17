@@ -55,13 +55,9 @@ function projecstLineHeight() {
 function Btns() {
   createButton("Расчитать стоимость", $(".content-btn"));
   createButton("Расчитать стоимость", $(".content-btn__max"), "max");
-  createButton(
-    "Расчитать стоимость",
-    $(".content-btn__max-footer"),
-    "max",
-    "secondary",
-  );
+  createButton("Расчитать стоимость", $(".content-btn__max-footer"), "max", "secondary",);
   createButton("Смотреть все проекты", $(".content-btn__huge"), "huge");
+  createButton("Получить консультацию", $(".content-btn__max-project"), "max")
 }
 
 import { createButton } from "./components.js";

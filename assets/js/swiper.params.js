@@ -43,15 +43,25 @@ $(document).ready(function () {
     const $customTotal = $(".pagination-total");
 
     function updateCustomPagination() {
-        const swiper = swiperEl[0].swiper;
-        if (swiper && $customCurrent.length && $customTotal.length) {
-            const currentGroup = Math.floor(swiper.realIndex / 2) + 1;
-            const totalGroups = Math.ceil(swiper.slides.length / 2) - 1;
+    const swiper = swiperEl[0].swiper;
+    if (swiper && $customCurrent.length && $customTotal.length) {
+        let slidesPerGroup = 2;
 
-            $customCurrent.text(currentGroup);
-            $customTotal.text(totalGroups);
+        if (window.innerWidth < 768) {
+            slidesPerGroup = 1;
+        } else {
+            slidesPerGroup = 2;
         }
+
+        const currentGroup = Math.floor(swiper.realIndex / slidesPerGroup) + 1;
+        const totalGroups = Math.ceil(swiper.slides.length / slidesPerGroup);
+
+        const adjustedTotalGroups = Math.max(totalGroups, currentGroup);
+
+        $customCurrent.text(currentGroup);
+        $customTotal.text(adjustedTotalGroups);
     }
+}
 
     const params = {
         slidesPerView: 2.5,
@@ -64,6 +74,7 @@ $(document).ready(function () {
         breakpoints: {
             320: {
                 slidesPerView: 1.5,
+                slidesPerGroup: 1,
                 spaceBetween: 10
             },
             768: {

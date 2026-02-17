@@ -1053,7 +1053,14 @@ a.logo {
   }
 }
 
+.consult-with-price {
+  & h2 {
+    margin-bottom: clamp(var(--sp-ui-3), 4vw, calc(var(--sp-ui-3) * 2));
+  }
+}
+
 .individual-project__main .consult-with-price {
+  margin-top: var(--sp-3);
   @media (min-width: 993px) {
     display: none;
   }
@@ -1066,6 +1073,11 @@ a.logo {
 .specs__row {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: var(--sp-1);
+  }
 }
 
 .specs__col {
@@ -1073,6 +1085,13 @@ a.logo {
   grid-template-columns: 1fr;
   grid-template-rows: subgrid;
   grid-row: span 2;
+
+
+  @media (max-width: 992px) {
+    grid-template-rows: auto;
+    grid-row: auto;
+    gap: calc(var(--sp-4) * 2);
+  }
 }
 
 .specs__switchers {
@@ -1134,6 +1153,10 @@ a.logo {
 
 .specs__info-title {
   color: var(--c-main);
+}
+
+swiper-container.individual-project {
+  margin-bottom: clamp(calc(var(--sp-4) * 2), 5vw, calc(var(--sp-3) * 2));
 }
 
 swiper-container.individual-project swiper-slide img {

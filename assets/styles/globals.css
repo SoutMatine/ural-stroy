@@ -828,3 +828,21 @@ a.logo {
     margin-top: clamp(var(--sp-2), 5vw, var(--sp-1));
   }
 }
+
+.contacts__img {
+  width: 100%;
+  border-radius: var(--br-1);
+  -webkit-border-radius: var(--br-1);
+  -moz-border-radius: var(--br-1);
+  -ms-border-radius: var(--br-1);
+  -o-border-radius: var(--br-1);
+
+  & img {
+    width: 100%;
+    border-radius: inherit;
+    -webkit-border-radius: inherit;
+    -moz-border-radius: inherit;
+    -ms-border-radius: inherit;
+    -o-border-radius: inherit;
+  }
+}

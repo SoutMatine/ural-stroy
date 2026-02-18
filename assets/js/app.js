@@ -58,12 +58,16 @@ function Btns() {
   createButton("Расчитать стоимость", $(".content-btn__max-footer"), "max", "secondary",);
   createButton("Смотреть все проекты", $(".content-btn__huge"), "huge");
   createButton("Получить консультацию", $(".content-btn__max-project"), "max")
+  createButton("Смотреть все статьи", $(".content-btn__huge-news"), "huge")
 }
 
 import { createButton } from "./components.js";
 import { burgerMenu } from "../components/header/header.js";
 import { dropDown } from "../components/header/header.js";
 import { setMobMenuMargin } from "../components/header/header.js";
+
+
+
 
 $(document).ready(function () {
   heroMarginForImg();
@@ -72,9 +76,7 @@ $(document).ready(function () {
   stepsAccordion();
   projecstLineHeight();
 
-
   $(document).on("footer:loaded", Btns);
-
   $(document).on("header:loaded", marginForMain);
   $(document).on("header:loaded", setMobMenuMargin);
   $(document).on("header:loaded", dropDown);

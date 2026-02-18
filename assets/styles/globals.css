@@ -1061,6 +1061,7 @@ a.logo {
 
 .individual-project__main .consult-with-price {
   margin-top: var(--sp-3);
+
   @media (min-width: 993px) {
     display: none;
   }
@@ -1167,4 +1168,86 @@ swiper-container.individual-project swiper-slide img {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+
+
+
+
+/* Typical Project Page */
+
+.typical-project__inner h1 {
+  margin-bottom: clamp(var(--sp-2), 3vw, calc(var(--sp-2) * 2));
+}
+
+.typical-project__main-img {
+  width: 100%;
+  margin-bottom: clamp(var(--sp-2), 3vw, var(--sp-3));
+
+  & img {
+    width: 100%;
+  }
+}
+
+.typical-project__specs {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: clamp(var(--sp-4), 5vw, calc(var(--sp-2) * 4));
+}
+
+.typical-project__specs-top {
+  border-bottom: var(--border-1);
+  padding-bottom: var(--sp-5);
+
+  margin-bottom: var(--sp-2);
+
+  & p {
+    margin: 0;
+  }
+}
+
+.typical-project__specs-subtitles {
+  display: flex;
+  gap: var(--sp-3);
+
+  @media (max-width: 992px) {
+    margin-top: var(--sp-4);
+  }
+}
+
+.typical-project__specs-bottom h3 {
+  @media (max-width: 992px) {
+    margin-bottom: var(--sp-3);
+  }
+}
+
+.typical-project__gallery {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(calc(var(--sp-4) * 2), 5vw, calc(var(--sp-2) * 2.6));
+  margin-bottom: clamp(var(--sp-1), 5vw, calc(var(--sp-2) * 4));
+}
+
+.specs__row--project {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.specs__row--project .specs__switchers {
+  margin-bottom: var(--sp-2);
+}
+
+.specs__col--project {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: calc(var(--sp-4) * 2);
+  }
+}
+
+.specs__col--project .specs__info {
+  margin: 0;
 }

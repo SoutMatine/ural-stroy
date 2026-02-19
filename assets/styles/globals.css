@@ -690,6 +690,11 @@ a.logo {
 
 .blog-swiper swiper-slide {
   height: 500px;
+
+  & video {
+    height: 100%;
+    outline: none;
+  }
 }
 
 

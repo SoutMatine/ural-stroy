@@ -44,12 +44,68 @@ function stepsAccordion() {
   });
 }
 
-function projecstLineHeight() {
-  const line = $(".project__item-line")
-  const imgHeight = $(".project__item-img").outerHeight()
 
-  line.css("height", imgHeight + "px")
-}
+
+$(document).ready(function () {
+
+  function setCardHeights() {
+    $('.steps__card').each(function () {
+      var $card = $(this);
+
+      if ($card.hasClass('active')) {
+        var originalHeight = $card[0].scrollHeight;
+        $card.data('original-height', originalHeight);
+      }
+    });
+  }
+
+  function openCard($card) {
+    $card.css('height', 'auto');
+    var fullHeight = $card[0].scrollHeight;
+
+    $card.css('height', '98px');
+
+    setTimeout(function () {
+      $card.css('height', fullHeight + 'px');
+      $card.addClass('active');
+    }, 10);
+  }
+
+  function closeCard($card) {
+    $card.css('height', '98px');
+    $card.removeClass('active');
+  }
+
+  $(document).on('transitionend', '.steps__card', function (e) {
+    var $card = $(this);
+
+    if (e.target === this) {
+      if ($card.hasClass('active')) {
+        $card.css('height', 'auto');
+      } else {
+        $card.css('height', '98px');
+      }
+    }
+  });
+
+  $('.steps__card').on('click', function () {
+    var $currentCard = $(this);
+    var isActive = $currentCard.hasClass('active');
+
+    $('.steps__card.active').not($currentCard).each(function () {
+      closeCard($(this));
+    });
+
+    if (!isActive) {
+      openCard($currentCard);
+    } else {
+      closeCard($currentCard);
+    }
+  });
+
+  setCardHeights();
+
+});
 
 
 function Btns() {
@@ -74,7 +130,6 @@ $(document).ready(function () {
   heroHeight();
   burgerMenu();
   stepsAccordion();
-  projecstLineHeight();
 
   $(document).on("footer:loaded", Btns);
   $(document).on("header:loaded", marginForMain);
@@ -84,9 +139,58 @@ $(document).ready(function () {
   $(window).on("resize", function () {
     heroMarginForImg();
     heroHeight();
-    projecstLineHeight();
 
     $(document).on("header:loaded", marginForMain);
     $(document).on("header:loaded", setMobMenuMargin);
   });
 });
+
+
+
+const animated = document.querySelectorAll(".animate")
+
+const rows = {}
+
+animated.forEach((animate) => {
+  const rowPosition = Math.round(animate.offsetTop / 10)
+  if (!rows[rowPosition]) {
+    rows[rowPosition] = []
+  }
+  rows[rowPosition].push(animate)
+})
+
+Object.values(rows).forEach(row => {
+  row.sort((a, b) => a.offsetLeft - b.offsetLeft)
+
+  row.forEach((animate, indexInRow) => {
+    const animation = animate.classList[1]
+    animate.classList.remove(animation)
+    let activated = false
+
+    let delay = indexInRow * 100 // Было 200, стало 100
+
+    const isFirstRow = animate.offsetTop < window.innerHeight
+    if (isFirstRow) {
+      delay = indexInRow * 50 // Всего 0, 50, 100ms для первого ряда
+    }
+
+    function checkVisibility() {
+      const triggerPoint = animate.offsetTop - window.innerHeight + 50 // Появляется почти сразу
+
+      if (!activated && pageYOffset > triggerPoint) {
+        setTimeout(() => {
+          animate.classList.add(animation)
+        }, delay)
+        activated = true
+      }
+    }
+
+    // Проверяем сразу при загрузке
+    if (document.readyState === 'complete') {
+      checkVisibility()
+    } else {
+      window.addEventListener("load", checkVisibility)
+    }
+    window.addEventListener("scroll", checkVisibility)
+  })
+})

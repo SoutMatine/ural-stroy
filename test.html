@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    section {
+        min-height: 100vh;
+        padding: 2em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & h1 {
+            font-size: 4em;
+            margin: 0;
+
+        }
+    }
+
+    .animate {
+        opacity: 0;
+    }
+
+    .fade-up {
+        animation: fadeUp 1000ms ease-in-out forwards;
+    }
+
+    @keyframes fadeUp {
+        0% {
+            opacity: 0;
+            transform: translateY(100px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<body>
+    <section>
+
+    </section>
+    <section>
+        <div style="display: flex; overflow: hidden; gap: 10px;">
+            <h1 class="animate fade-up">анимация</h1>
+            <h1 class="animate fade-up">анимация</h1>
+            <h1 class="animate fade-up">анимация</h1>
+
+        </div>
+
+    </section>
+
+
+    <script>
+        const animated = document.querySelectorAll(".animate")
+
+        animated.forEach((animate, index) => {
+            const animation = animate.classList[1]
+            animate.classList.remove(animation)
+            let activated = false
+
+            window.addEventListener("scroll", function checkAnimation() {
+                if (!activated && pageYOffset > animate.offsetTop - window.innerHeight) {
+                    setTimeout(() => {
+                        animate.classList.add(animation)
+                    }, index * 200)
+                    activated = true
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

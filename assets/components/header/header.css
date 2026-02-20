@@ -122,7 +122,6 @@ header {
 }
 
 .header__dropdown a:hover {
-  font-weight: var(--fw-bold);
   color: var(--c-main);
   transition: var(--transition-1);
 }
